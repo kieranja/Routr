@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple tests</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="Routr.js"></script>
+        
+        <script>
+
+            /**
+             * Test 1
+             */
+
+            // some tests
+            Routr.route(
+                '^/$',
+                function() {}
+            );
+
+            !Routr.init('/') ? alert('Fail #1') : '';
+
+            // reset
+            Routr.clearAllRoutes();
+
+            /**
+             * Test 2
+             */
+
+            // some tests
+            Routr.route(
+                '^/$', 
+                function() {}
+            );
+
+            Routr.init('/lol') ? alert('Fail #2') : '';
+
+            // reset
+            Routr.clearAllRoutes();
+
+            /**
+             * Test 3
+             */
+
+            // some tests
+            Routr.route(
+                '^/cats$', 
+                function() {}
+            );
+
+            Routr.route(
+                '^/areawesome$', 
+                function() {}
+            );   
+
+            Routr.init('/') ? alert('Fail test 3') : '';
+
+
+            // reset
+            Routr.clearAllRoutes();
+
+
+            /**
+             * Test FOURRRRRRr
+             */
+
+            // me don't like this, but me do this!
+            var horribleGlobalConditionalMet = 0;
+
+            // heyyyyyyy sexy router
+            Routr.route(
+                '^/user/([0-9]+)$', 
+                function(userId) {
+                    horribleGlobalConditionalMet = userId;
+                }
+            );   
+
+            !Routr.init('/user/1234') ? alert('Fail test 4') : '';    
+            horribleGlobalConditionalMet != 1234  ? alert('Fail test 4.2') : '';            
+            
+        </script>
+        
+    </head>
+    <body>
+        <h1>Simple examples</h1>
+        <p>If this page doesn't fire off an alert it means everything is good.</p>
+        <p>I will make a proper test suite soon! :)</p>
+        <p>View source for the tests</p>
+    </body>
+</html>
